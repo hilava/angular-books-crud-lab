@@ -4,3 +4,63 @@
   Make sure you display an image, the title, and the author.
   The title should be a link to the specific book view.
 </div> -->
+<div ng-repeat="book in booksIndexCtrl.books" class="row">
+  <div class="col-md-3">
+    <a ng-href={{book._id}}>{{book.title}}</a>
+  </div>
+    <div class="col-md-3">
+      Author: {{book.author}}
+      Release Date: {{book.realeaseDate}}
+    </div>
+    <div class="thumbnail">
+      <img ng-src={{book.image}}>
+    </div>
+  </p>
+</div>
+
+<!-- Add Book Form -->
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <form class="form-horizontal" ng-submit="booksIndexCtrl.createAlbum()">
+      <fieldset>
+        <!-- Form Name -->
+        <legend>Add New Book</legend>
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label">Book Title</label>
+          <div class="col-md-4">
+          <input id="title" ng-model="booksIndexCtrl.newBook.title" type="text" class="form-control input-md" required="">
+          </div>
+        </div>
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label">Author</label>
+          <div class="col-md-4">
+          <input ng-model="booksIndexCtrl.newBook.author" type="text" class="form-control input-md">
+          </div>
+        </div>
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label">Release Date</label>
+          <div class="col-md-4">
+          <input ng-model="booksIndexCtrl.newBook.releaseDate" type="text" class="form-control input-md">
+          </div>
+        </div>
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label">Image url</label>
+          <div class="col-md-4">
+          <input ng-model="booksIndexCtrl.newBook.image" type="text" class="form-control input-md">
+          </div>
+        </div>
+        <!-- Button -->
+        <div class="form-group">
+          <label class="col-md-4 control-label">Save Book</label>
+          <div class="col-md-4">
+            <button class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>

@@ -7,4 +7,25 @@
        click edit. Don't forget that all of those
        buttons and forms will need some angular
        functionality! -->
+	<p>
+		{{booksShowCtrl.book.author}}
+		{{booksShowCtrl.book.releaseDate}}
+		<div class="col-md-3 col-xs-12 thumbnail">
+			<img ng-src={{booksShowCtrl.book.image}}>
+		</div>
+	</p>
+	<div class='panel-footer col-md-3'>
+		<button class='btn btn-danger' ng-click="booksIndexCtrl">Delete Book</button>
+		<button class='btn btn-info' ng-hide="editing" ng-click="editing = true">Edit Book</button>
+		<button class='btn btn-success' ng-show="editing" ng-click="booksShowCtrl.editBook(); editing = false">Save Changes</button>
+	</div>
+
+
+
+<!--  _id: "57113b4f77bd841100ee8769",
+title: "Around the World in 80 Days",
+author: "Jules Verne",
+image: "https://cloud.githubusercontent.com/assets/7833470/10892118/865bee3e-8156-11e5-9634-cd7bcd3d6d4f.jpg",
+releaseDate: "January 30, 1873",-->
+
 </div>
