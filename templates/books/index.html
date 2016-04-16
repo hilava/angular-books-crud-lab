@@ -10,7 +10,9 @@
   </div>
     <div class="col-md-3">
       Author: {{book.author}}
-      Release Date: {{book.realeaseDate}}
+    </div>
+    <div class="col-md-3">
+      Release Date: {{book.releaseDate}}
     </div>
     <div class="thumbnail">
       <img ng-src={{book.image}}>
@@ -57,7 +59,7 @@
         <div class="form-group">
           <label class="col-md-4 control-label">Save Book</label>
           <div class="col-md-4">
-            <button class="btn btn-primary">Submit</button>
+            <button ng-click="booksIndexCtrl.createBook()" class="btn btn-primary">Submit</button>
           </div>
         </div>
       </fieldset>

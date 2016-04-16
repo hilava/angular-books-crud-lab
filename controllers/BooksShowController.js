@@ -26,14 +26,13 @@ function BooksShowController($http, $routeParams, $location) {
   vm.deleteBook = function(){
     $http({
       method: 'DELETE',
-      url:endpoint + $routeParams.id,
+      url: endpoint + "/" + $routeParams.id,
       data: vm.book
     }).then(deleteSuccess, deleteError);
   };
 
   function deleteSuccess(response){
-    var index = vm.books.indexOf(vm.book);
-    vm.books.splice(index,1);
+    console.log(response.data);
     //redirect to home page
     $location.path("/");
   }
@@ -45,9 +44,9 @@ function BooksShowController($http, $routeParams, $location) {
   vm.updateBook = function(){
     $http({
       method: 'PUT',
-      url: endpoint + $routeParams.id,
+      url: endpoint + "/" + $routeParams.id,
       data: vm.book
-    }).then(updateSuccess, updateDelete);
+    }).then(updateSuccess, updateError);
   };
 
   function updateSuccess(response){
