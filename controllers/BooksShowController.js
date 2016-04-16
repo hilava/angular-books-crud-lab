@@ -59,5 +59,16 @@ function BooksShowController($http, $routeParams, $location) {
   function updateError(err){
     console.log("Error: ", err);
   }
+
+  vm.cancelUpdate = function(){
+    //redirect to home page
+    $location.path("/");
+  };
+
+  vm.back = function(){
+    //redirect to home page
+    $location.path("/");
+  };
+
 //close BooksShowController function
 }

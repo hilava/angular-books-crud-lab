@@ -29,7 +29,9 @@
 					 </ul>
 				 <div class='panel-footer col-md-3'>
 				 	 <button class='btn btn-danger' ng-click="booksShowCtrl.deleteBook()">Delete Book</button>
+					 <button class='btn btn-info' ng-hide="editing" ng-click="booksShowCtrl.back();">Back To Index</button>
 					 <button class='btn btn-info' ng-hide="editing" ng-click="editing = true">Edit Book</button>
+					 <button class='btn btn-info' ng-show="editing" ng-click="booksShowCtrl.cancelUpdate();">Cancel</button>
 					 <button class='btn btn-success' ng-show="editing" ng-click="booksShowCtrl.updateBook(); editing = false">Save Changes</button>
 				 </div>
 				</div>
