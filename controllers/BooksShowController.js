@@ -8,28 +8,57 @@ function BooksShowController($http, $routeParams, $location) {
   vm.book = {};
   var endpoint = "https://super-crud.herokuapp.com/books";
 
-$http({
-  method: 'GET',
-  url: endpoint + "/" + $routeParams.id
-  }).then(showSuccess, showError);
+  $http({
+    method: 'GET',
+    url: endpoint + "/" + $routeParams.id
+    }).then(showSuccess, showError);
 
 
-function showSuccess(response){
-  console.log(response);
-  vm.book = response.data;
-}
+  function showSuccess(response){
+    console.log(response);
+    vm.book = response.data;
+  }
 
-function showError(err){
-  console.log(err);
-}
+  function showError(err){
+    console.log(err);
+  }
 
-  // $http({
-  // method: 'GET',
-  // url: 'api/albums/' + $routeParams.id
-  // }).then(function success(response) {
-  //   vm.album = response.data;
-  // }, function errorCallback(response) {
-  //     console.log('There was an error getting the data', response);
-  // });
+  vm.deleteBook = function(){
+    $http({
+      method: 'DELETE',
+      url:endpoint + $routeParams.id,
+      data: vm.book
+    }).then(deleteSuccess, deleteError);
+  };
 
+  function deleteSuccess(response){
+    var index = vm.books.indexOf(vm.book);
+    vm.books.splice(index,1);
+    //redirect to home page
+    $location.path("/");
+  }
+
+  function deleteError(err){
+    console.log(err);
+  }
+
+  vm.updateBook = function(){
+    $http({
+      method: 'PUT',
+      url: endpoint + $routeParams.id,
+      data: vm.book
+    }).then(updateSuccess, updateDelete);
+  };
+
+  function updateSuccess(response){
+    //no need to do anything
+    console.log("Response: ", response);
+    //redirect to home page
+    $location.path("/");
+  }
+
+  function updateError(err){
+    console.log("Error: ", err);
+  }
+//close BooksShowController function
 }

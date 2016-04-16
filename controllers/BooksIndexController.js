@@ -6,7 +6,8 @@ BooksIndexController.$inject=['$http'];
 function BooksIndexController( $http ) {
   var vm = this;
   var endpoint = "https://super-crud.herokuapp.com/books";
-  vm.newBook="";
+  vm.newBook={};
+  vm.book={};
 
   $http({
     method: 'GET',
@@ -22,11 +23,11 @@ function BooksIndexController( $http ) {
     console.log(err);
   }
 
-vm.createAlbum = function() {
+vm.createBook = function() {
   $http({
     method: 'POST',
     url: endpoint,
-    data: vm.newBook,
+    data: vm.newBook
   }).then(createSuccess, createError);
 };
 
@@ -37,9 +38,6 @@ function createSuccess(response){
 function createError(err){
   console.log(err);
 }
-
-
-
 
 
 

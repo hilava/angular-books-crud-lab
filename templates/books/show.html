@@ -7,19 +7,32 @@
        click edit. Don't forget that all of those
        buttons and forms will need some angular
        functionality! -->
-	<p>
-		{{booksShowCtrl.book.author}}
-		{{booksShowCtrl.book.releaseDate}}
-		<div class="col-md-3 col-xs-12 thumbnail">
-			<img ng-src={{booksShowCtrl.book.image}}>
+<div class="col-md-10 col-md-offset-1">
+ <div class="panel panel-default">
+   <div class="panel-body">
+     <div class='row'>
+       <div class="col-md-3 col-xs-12 thumbnail">
+         <img src=ng-src={{booksShowCtrl.book.image}} alt="book image">
+       </div>
+			 <li class="list-group-item">
+				 <h4 class="inline-header">Author:</h4>
+				 <span ng-hide="editing">{{booksShowCtrl.book.author}}</span>
+				 <input ng-show="editing" ng-model="booksShowCtrl.book.author", type="text" class="form-control input-md">
+			 </li>
+			 <li class="list-group-item">
+			 	 <h4 class='inline-header'>Release Date:</h4>
+				 <span ng-hide="editing">{{booksShowCtrl.book.releaseDate}}</span>
+				 <input ng-show="editing" ng-model="booksShowCtrl.book.releaseDate", type="text" class="form-control input-md">
+			 </li>
+			 <div class='panel-footer col-md-3'>
+			 	 <button class='btn btn-danger' ng-click="booksIndexCtrl.deleteBook()">Delete Book</button>
+				 <button class='btn btn-info' ng-hide="editing" ng-click="editing = true">Edit Book</button>
+				 <button class='btn btn-success' ng-show="editing" ng-click="booksShowCtrl.editBook(); editing = false">Save Changes</button>
+			 </div>
+			</div>
 		</div>
-	</p>
-	<div class='panel-footer col-md-3'>
-		<button class='btn btn-danger' ng-click="booksIndexCtrl">Delete Book</button>
-		<button class='btn btn-info' ng-hide="editing" ng-click="editing = true">Edit Book</button>
-		<button class='btn btn-success' ng-show="editing" ng-click="booksShowCtrl.editBook(); editing = false">Save Changes</button>
 	</div>
-
+</div>
 
 
 <!--  _id: "57113b4f77bd841100ee8769",
